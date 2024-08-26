@@ -2,6 +2,12 @@ import { QwikAuth$ } from "@auth/qwik";
 import Credentials from "@auth/qwik/providers/credentials";
 
 
+//  this not work
+// import type {  User as AuthUser } from "@auth/qwik";
+// export interface User extends AuthUser {
+//     role?: string;
+// }
+
 
 export const { onRequest, useSession, useSignIn, useSignOut } = QwikAuth$(
   ({env}) => ({
@@ -46,7 +52,8 @@ export const { onRequest, useSession, useSignIn, useSignOut } = QwikAuth$(
         jwt({ token, user  }   )  {
           console.log("jwt token",token)
           console.log("jwt user",user)
-          // if (user.role) {  
+          // if (user.role) {
+            // error role does not exist in User or AdapterUser
             token.role  = user.role!  ;
             token.id = user.id! ;
           // }
